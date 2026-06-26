@@ -18,7 +18,7 @@ const router = createRouter({
 
   ]
 })
-router.beforeEach((to, from) => {
+router.beforeEach((to) => {
   const userStore = useUserStore()
   if (to.path !== '/login' && !userStore.token) {
     return '/login'
