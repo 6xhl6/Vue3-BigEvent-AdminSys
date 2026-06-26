@@ -14,6 +14,7 @@ const pathSrc = fileURLToPath(new URL('./src', import.meta.url))
 
 // https://vite.dev/config/
 export default defineConfig({
+  base: '/Vue3-BigEvent-AdminSys/',
   plugins: [
     vue(),
     // vueDevTools(), // 按需启用：需要 Vue DevTools 调试时取消注释
@@ -42,6 +43,18 @@ export default defineConfig({
     vueDevTools()
   ],
   server: {
+    proxy: {
+      '/api': {
+        target: 'https://big-event-vue-api-t.itheima.net',
+        changeOrigin: true,
+      },
+      '/my': {
+        target: 'https://big-event-vue-api-t.itheima.net',
+        changeOrigin: true,
+      },
+    },
+  },
+  preview: {
     proxy: {
       '/api': {
         target: 'https://big-event-vue-api-t.itheima.net',
