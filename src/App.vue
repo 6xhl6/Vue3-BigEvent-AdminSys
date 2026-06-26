@@ -1,16 +1,12 @@
-<script setup>
-import { ref } from 'vue'
+<script setup lang="ts">
+import zh from 'element-plus/es/locale/lang/zh-cn.mjs'
 
-  const count = ref(0) 
 </script>
 
 <template>
-  <h1>You did it!</h1>
-  <p>
-    Visit
-    <a href="https://vuejs.org/" target="_blank" rel="noopener">vuejs.org</a> to
-    read the documentation
-  </p>
+  <el-config-provider :locale="zh">
+    <router-view />
+  </el-config-provider>
 </template>
 
 <style scoped></style>

@@ -36,5 +36,12 @@ export default defineConfig([
       'vue/no-setup-props-destructure': ['off'], // 关闭 props 解构的校验
       'no-undef': 'error' // 未定义变量错误提示
     }
+  },
+  // .vue 文件关闭 no-unused-vars（ESLint 不识别模板，oxlint 已覆盖此检查）
+  {
+    files: ['**/*.vue'],
+    rules: {
+      'no-unused-vars': 'off'
+    }
   }
 ])
