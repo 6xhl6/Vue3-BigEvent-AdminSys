@@ -104,7 +104,7 @@ const handleCommand = (command) => {
     </el-aside>
     <el-container>
       <el-header>
-        <div>黑马程序员：<strong>{{ userStore.user.nickname || userStore.user.username }}</strong></div>
+        <div>程序员：<strong>{{ userStore.user.nickname || userStore.user.username }}</strong></div>
         <el-dropdown placement="bottom-end" @command="handleCommand">
           <span class="el-dropdown__box">
             <el-avatar :src="userStore.user.user_pic || avatar" alt="用户头像" />
@@ -125,7 +125,7 @@ const handleCommand = (command) => {
       <el-main>
         <router-view :key="$route.fullPath"></router-view>
       </el-main>
-      <el-footer>大事件 ©2023 Created by 黑马程序员</el-footer>
+      <el-footer>Breaking News.com</el-footer>
     </el-container>
   </el-container>
 </template>

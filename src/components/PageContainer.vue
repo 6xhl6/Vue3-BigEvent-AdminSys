@@ -17,6 +17,7 @@ defineProps({
         </div>
       </div>
     </template>
+    <!-- 主插槽用于自定义内容 -->
     <slot></slot>
   </el-card>
 </template>

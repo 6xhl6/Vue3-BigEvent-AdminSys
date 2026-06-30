@@ -28,7 +28,7 @@ import{Mt as e,Nt as t,at as n,it as r,jt as i,ot as a}from"./index-ScmGicXJ.js"
 `),`blotName`in r&&`formats`in r&&typeof r.formats==`function`)return U(t,r.blotName,r.formats(e,n),n);return t}function sn(e,t){return W(t,`
 `)||t.insert(`
 `),t}function cn(e,t,n){let r=n.query(`code-block`);return U(t,`code-block`,r&&`formats`in r&&typeof r.formats==`function`?r.formats(e,n):!0,n)}function ln(){return new C.default}function un(e,t,n){let r=n.query(e);if(r==null||r.blotName!==`list`||!W(t,`
-`))return t;let i=-1,a=e.parentNode;for(;a!=null;)[`OL`,`UL`].includes(a.tagName)&&(i+=1),a=a.parentNode;return i<=0?t:t.reduce((e,t)=>t.insert?t.attributes&&typeof t.attributes.indent==`number`?e.push(t):e.insert(t.insert,{indent:i,...t.attributes||{}}):e,new C.default)}function dn(e,t,n){let r=e,i=r.tagName===`OL`?`ordered`:`bullet`,a=r.getAttribute(`data-checked`);return a&&(i=a===`true`?`checked`:`unchecked`),U(t,`list`,i,n)}function fn(e,t,n){if(!W(t,`
+`))return t;let i=-1,a=e.parentNode;for(;a!=null;)[`OL`,`UL`].includes(a.tagName)&&(i+=1),a=a.parentNode;return i<=0?t:t.reduce((e,t)=>t.insert?t.attributes&&typeof t.attributes.indent==`number`?e.push(t):e.insert(t.insert,{indent:i,...t.attributes}):e,new C.default)}function dn(e,t,n){let r=e,i=r.tagName===`OL`?`ordered`:`bullet`,a=r.getAttribute(`data-checked`);return a&&(i=a===`true`?`checked`:`unchecked`),U(t,`list`,i,n)}function fn(e,t,n){if(!W(t,`
 `)){if(G(e,n)&&(e.childNodes.length>0||e instanceof HTMLParagraphElement))return t.insert(`
 `);if(t.length()>0&&e.nextSibling){let r=e.nextSibling;for(;r!=null;){if(G(r,n))return t.insert(`
 `);let e=n.query(r);if(e&&e.prototype instanceof O)return t.insert(`
