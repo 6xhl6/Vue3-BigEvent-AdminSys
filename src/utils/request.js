@@ -2,6 +2,7 @@ import axios from 'axios'
 import { useUserStore } from '@/stores/user.js'
 import { ElMessage } from 'element-plus'
 import router from '@/router'
+import { createCacheAdapter, cacheManager } from './requestCache.js'
 
 const baseURL = 'https://big-event-vue-api-t.itheima.net'
 
@@ -9,6 +10,11 @@ const instance = axios.create({
   baseURL: baseURL,
   timeout: 5000,
 })
+
+// 安装请求缓存层 —— 包装原始适配器
+// adapter 是 axios 请求的最终出口，在此处做缓存判断是最干净的切入点
+const originalAdapter = instance.defaults.adapter || axios.defaults.adapter
+instance.defaults.adapter = createCacheAdapter(originalAdapter)
 
 instance.interceptors.request.use(
   config => {
@@ -54,4 +60,4 @@ instance.interceptors.response.use(
   }
 )
 export default instance
-export { baseURL }
+export { baseURL, cacheManager }

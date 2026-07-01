@@ -1,4 +1,4 @@
-import request from '@/utils/request'
+import request, { cacheManager } from '@/utils/request'
 
 export const userRegisterService = ({username, password, repassword}) => {
   return request({
@@ -23,25 +23,30 @@ export const userLoginService = ({username, password}) => {
 }
 export const getUserInfoService = () => {
   return request({
-    url: '/my/userinfo', 
+    url: '/my/userinfo',
     method: 'get'
   })
 }
-export const updateUserInfoService = (data) => {
-  return request({
+export const updateUserInfoService = async (data) => {
+  const res = await request({
     url: '/my/userinfo',
     method: 'put',
     data
   })
+  // 更新用户信息后，用户信息缓存失效
+  cacheManager.invalidate('/my/userinfo')
+  return res
 }
-export const uploadAvatarService = (avatar_string) => {
-  return request({
+export const uploadAvatarService = async (avatar_string) => {
+  const res = await request({
     url: '/my/update/avatar',
     method: 'patch',
     data:{
       avatar: avatar_string
     }
   })
+  cacheManager.invalidate('/my/userinfo')
+  return res
 }
 export const updatePasswordService = (data) => {
   return request({
