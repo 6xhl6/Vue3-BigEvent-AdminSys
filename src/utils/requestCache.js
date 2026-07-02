@@ -254,12 +254,9 @@ export function createCacheAdapter(originalAdapter) {
   }
 }
 
-// 开发调试
-
-if (import.meta.env.DEV) {
-  // 挂载到 window，方便在浏览器控制台调试：
-  //   __requestCache.getStats()   → 查看缓存命中率
-  //   __requestCache.clear()     → 清空所有缓存
-  //   __requestCache.invalidate('/my/article') → 清除特定缓存
-  window.__requestCache = cacheManager
-}
+// 开发调试 API
+// 挂载到 window，在浏览器控制台随时调试缓存状态：
+//   __requestCache.getStats()        → 查看缓存命中率、条目数
+//   __requestCache.clear()          → 清空所有缓存
+//   __requestCache.invalidate('/my/article') → 清除特定缓存
+window.__requestCache = cacheManager
