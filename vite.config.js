@@ -66,6 +66,9 @@ export default defineConfig({
       },
     },
   },
+  build: {
+    outDir: 'docs',
+  },
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))

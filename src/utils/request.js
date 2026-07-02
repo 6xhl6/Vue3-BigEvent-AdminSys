@@ -11,9 +11,7 @@ const instance = axios.create({
   timeout: 5000,
 })
 
-// 安装请求缓存层 —— 包装原始适配器
-// adapter 是 axios 请求的最终出口，在此处做缓存判断是最干净的切入点
-const originalAdapter = instance.defaults.adapter || axios.defaults.adapter
+const originalAdapter = axios.getAdapter(instance.defaults.adapter)
 instance.defaults.adapter = createCacheAdapter(originalAdapter)
 
 instance.interceptors.request.use(
